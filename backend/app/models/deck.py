@@ -13,6 +13,8 @@ class Deck(Base):
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     format: Mapped[str] = mapped_column(String(100), nullable=False, default="Commander")
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    has_commander: Mapped[bool] = mapped_column(default=True)
+    commander_scryfall_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
     created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
     updated_at: Mapped[datetime] = mapped_column(
         default=lambda: datetime.now(timezone.utc),

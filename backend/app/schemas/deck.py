@@ -32,6 +32,8 @@ class DeckUpdate(BaseModel):
     name: str | None = Field(default=None, min_length=1, max_length=255)
     format: str | None = Field(default=None, min_length=1, max_length=100)
     description: str | None = None
+    has_commander: bool | None = None
+    commander_scryfall_id: str | None = None
 
 
 class DeckRead(BaseModel):
@@ -39,6 +41,8 @@ class DeckRead(BaseModel):
     name: str
     format: str
     description: str | None = None
+    has_commander: bool = True
+    commander_scryfall_id: str | None = None
     created_at: datetime
     updated_at: datetime
     cards: list[DeckCardRead] = []
